@@ -3,7 +3,7 @@ class ForumThreadsController < ApplicationController
     
     def index
         if params[:search]
-            @threads = ForumThread.where('title like ?', "%#{params[:search]}%")
+            @threads = ForumThread.where('title ilike ?', "%#{params[:search]}%")
         else
             @threads = ForumThread.order(sticky_order: :asc).order(id: :desc)
 
